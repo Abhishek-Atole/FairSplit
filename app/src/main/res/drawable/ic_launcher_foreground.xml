@@ -1,0 +1,21 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    <!-- Background circle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0"/>
+    
+    <!-- Dollar sign $ -->
+    <path
+        android:fillColor="#006C4C"
+        android:pathData="M54,30 L54,78 M47,36 Q47,30 54,30 Q61,30 61,36 Q61,42 54,42 L47,42 Q40,42 40,48 Q40,54 47,54 L61,54 Q68,54 68,60 Q68,66 61,66 Q54,66 54,66 Q47,66 47,60"/>
+    
+    <!-- Split arrow -->
+    <path
+        android:fillColor="#89F8C7"
+        android:strokeWidth="2"
+        android:pathData="M40,54 L68,54 M64,50 L68,54 L64,58 M44,50 L40,54 L44,58"/>
+</vector>

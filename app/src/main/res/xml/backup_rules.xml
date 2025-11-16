@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<full-backup-content>
+    <!-- Exclude Firebase Auth tokens and credentials -->
+    <exclude domain="sharedpref" path="FirebaseAuth"/>
+    
+    <!-- Exclude Room database (contains user data, should not backup across devices) -->
+    <exclude domain="database" path="."/>
+    
+    <!-- Exclude cache -->
+    <exclude domain="file" path="cache/"/>
+</full-backup-content>

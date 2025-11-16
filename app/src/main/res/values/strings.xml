@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">FairSplit</string>
+    
+    <!-- F20 - Income Manager -->
+    <string name="income_title">Monthly Income</string>
+    <string name="income_amount_label">Income Amount</string>
+    <string name="income_source_label">Income Source</string>
+    <string name="income_date_label">Start Date</string>
+    <string name="income_save">Save Income</string>
+    <string name="income_history">Income History</string>
+    
+    <!-- Income Sources -->
+    <string name="source_salary">Salary</string>
+    <string name="source_business">Business</string>
+    <string name="source_allowance">Allowance</string>
+    <string name="source_other">Other</string>
+    
+    <!-- F21 - Expense Tracker -->
+    <string name="expense_title">Personal Expenses</string>
+    <string name="expense_amount_label">Amount</string>
+    <string name="expense_category_label">Category</string>
+    <string name="expense_description_label">Description</string>
+    <string name="expense_date_label">Date</string>
+    <string name="expense_receipt_label">Add Receipt</string>
+    <string name="expense_save">Save Expense</string>
+    <string name="expense_total">Total Spent</string>
+    
+    <!-- Expense Categories -->
+    <string name="category_food">Food &amp; Dining</string>
+    <string name="category_transport">Transport</string>
+    <string name="category_shopping">Shopping</string>
+    <string name="category_bills">Bills &amp; Utilities</string>
+    <string name="category_entertainment">Entertainment</string>
+    <string name="category_other">Other</string>
+    
+    <!-- F22 - Borrow/Lend -->
+    <string name="borrow_lend_title">Borrow/Lend Log</string>
+    <string name="borrow_tab">Borrowed</string>
+    <string name="lend_tab">Lent</string>
+    <string name="add_transaction">Add Transaction</string>
+    <string name="transaction_amount">Amount</string>
+    <string name="transaction_person">Person Name</string>
+    <string name="transaction_due_date">Due Date</string>
+    <string name="transaction_notes">Notes</string>
+    <string name="transaction_mark_paid">Mark as Paid</string>
+    
+    <!-- F23 - Balance Dashboard -->
+    <string name="dashboard_title">Balance Dashboard</string>
+    <string name="total_income">Total Income</string>
+    <string name="total_expenses">Total Expenses</string>
+    <string name="total_borrowed">Borrowed</string>
+    <string name="total_lent">Lent</string>
+    <string name="remaining_balance">Remaining Balance</string>
+    <string name="budget_status_healthy">Healthy Budget</string>
+    <string name="budget_status_warning">Budget Warning</string>
+    <string name="budget_status_critical">Critical Budget</string>
+    
+    <!-- F24 - Monthly Report -->
+    <string name="report_title">Monthly Report</string>
+    <string name="report_month_selector">Select Month</string>
+    <string name="report_export_pdf">Export PDF</string>
+    <string name="report_share">Share Report</string>
+    <string name="chart_income_vs_expense">Income vs Expenses</string>
+    <string name="chart_expense_breakdown">Expense Breakdown</string>
+    <string name="chart_trend">Monthly Trend</string>
+    
+    <!-- F25 - History & Auto Reset -->
+    <string name="history_title">History</string>
+    <string name="history_archived_months">Archived Months</string>
+    <string name="history_carry_forward">Carry Forward Balance</string>
+    <string name="auto_reset_enabled">Auto reset enabled</string>
+    <string name="auto_reset_disabled">Auto reset disabled</string>
+    
+    <!-- Common -->
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="confirm">Confirm</string>
+    <string name="error_occurred">An error occurred</string>
+    <string name="loading">Loading…</string>
+    <string name="no_data">No data available</string>
+    <string name="currency_symbol">₹</string>
+</resources>

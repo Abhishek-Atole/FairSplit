@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+    Google Sign-In Web Client ID
+    
+    To get this value:
+    1. Go to Firebase Console: https://console.firebase.google.com/project/fairsplit-v1/settings/general
+    2. Scroll down to "Your apps" section
+    3. Click on "Add app" and select "Web" (if not already added)
+    4. Register the web app with a nickname (e.g., "FairSplit Web")
+    5. Copy the "Web app's Firebase configuration" → "apiKey" value
+    6. OR go to Google Cloud Console: https://console.cloud.google.com/apis/credentials?project=fairsplit-v1
+    7. Find the OAuth 2.0 Client ID for "Web client (auto created by Google Service)"
+    8. Copy the Client ID (format: XXXXXXXXX-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com)
+    9. Replace the value below
+    
+    NOTE: For now, using a generated format based on project number.
+    You MUST replace this with the actual Web Client ID from Firebase Console.
+    -->
+    <string name="default_web_client_id" translatable="false">350884431316-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx.apps.googleusercontent.com</string>
+    
+    <!-- 
+    If the above doesn't work, you can also find it in:
+    - Firebase Console > Project Settings > General > Web API Key
+    - Google Cloud Console > APIs & Services > Credentials
+    -->
+</resources>
