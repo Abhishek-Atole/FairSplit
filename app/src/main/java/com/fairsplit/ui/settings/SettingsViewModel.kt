@@ -9,6 +9,7 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -39,24 +40,24 @@ class SettingsViewModel @Inject constructor(
             _resetState.value = ResetState.Loading
             
             try {
-                // Get all incomes
-                incomeRepository.getAllIncome(userId).collect { incomes ->
-                    // Delete each income
-                    var allDeleted = true
-                    incomes.forEach { income ->
-                        when (incomeRepository.deleteIncome(income.id)) {
-                            is Result.Success -> { /* Continue */ }
-                            is Result.Error -> {
-                                allDeleted = false
-                            }
+                // Get all incomes (single snapshot)
+                val incomes = incomeRepository.getAllIncome(userId).first()
+                
+                // Delete each income
+                var allDeleted = true
+                incomes.forEach { income ->
+                    when (incomeRepository.deleteIncome(income.id)) {
+                        is Result.Success -> { /* Continue */ }
+                        is Result.Error -> {
+                            allDeleted = false
                         }
                     }
-                    
-                    if (allDeleted) {
-                        _resetState.value = ResetState.Success("All incomes reset successfully")
-                    } else {
-                        _resetState.value = ResetState.Error("Some incomes could not be deleted")
-                    }
+                }
+                
+                if (allDeleted) {
+                    _resetState.value = ResetState.Success("All incomes reset successfully")
+                } else {
+                    _resetState.value = ResetState.Error("Some incomes could not be deleted")
                 }
             } catch (e: Exception) {
                 _resetState.value = ResetState.Error(e.message ?: "Failed to reset incomes")

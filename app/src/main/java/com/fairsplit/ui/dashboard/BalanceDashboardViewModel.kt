@@ -116,9 +116,9 @@ class BalanceDashboardViewModel @Inject constructor(
         val borrowed = _totalBorrowed.value
         val lent = _totalLent.value
         
-        // Balance = Income - Expense + Lent - Borrowed
-        // (You lent money OUT, so it reduces your current balance)
+        // Balance = Income - Expense + Borrowed - Lent
         // (You borrowed money IN, so it increases your current balance)
+        // (You lent money OUT, so it reduces your current balance)
         _currentBalance.value = income - expense + borrowed - lent
     }
 
