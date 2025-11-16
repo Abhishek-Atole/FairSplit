@@ -116,8 +116,10 @@ class BalanceDashboardViewModel @Inject constructor(
         val borrowed = _totalBorrowed.value
         val lent = _totalLent.value
         
-        // Balance = Income - Expense - Borrowed + Lent
-        _currentBalance.value = income - expense - borrowed + lent
+        // Balance = Income - Expense + Lent - Borrowed
+        // (You lent money OUT, so it reduces your current balance)
+        // (You borrowed money IN, so it increases your current balance)
+        _currentBalance.value = income - expense + borrowed - lent
     }
 
     fun selectMonth(yearMonth: YearMonth) {

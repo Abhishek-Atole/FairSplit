@@ -19,6 +19,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.fairsplit.ui.theme.*
@@ -40,10 +41,19 @@ import com.google.firebase.auth.FirebaseAuth
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DashboardScreen(
-    navController: NavController = rememberNavController()
+    navController: NavController = rememberNavController(),
+    viewModel: BalanceDashboardViewModel = hiltViewModel()
 ) {
     val currentUser = FirebaseAuth.getInstance().currentUser
     val userName = currentUser?.displayName ?: currentUser?.email?.substringBefore("@") ?: "User"
+    
+    // Collect data from ViewModel
+    val dashboardState by viewModel.dashboardState.collectAsState()
+    val totalIncome by viewModel.totalIncome.collectAsState()
+    val totalExpense by viewModel.totalExpense.collectAsState()
+    val totalBorrowed by viewModel.totalBorrowed.collectAsState()
+    val totalLent by viewModel.totalLent.collectAsState()
+    val currentBalance by viewModel.currentBalance.collectAsState()
     
     var showLogoutDialog by remember { mutableStateOf(false) }
     
@@ -100,7 +110,14 @@ fun DashboardScreen(
         bottomBar = {
             DashboardBottomBar(
                 selectedTab = 0,
-                onTabSelected = { /* TODO: Navigate to tabs */ }
+                onTabSelected = { index ->
+                    when (index) {
+                        0 -> { /* Already on dashboard */ }
+                        1 -> { /* TODO: Groups */ }
+                        2 -> { navController.navigate("expense_list") }
+                        3 -> { navController.navigate("settings") }
+                    }
+                }
             )
         }
     ) { paddingValues ->
@@ -116,18 +133,18 @@ fun DashboardScreen(
             // Balance Overview Card
             item {
                 BalanceCard(
-                    balance = 2850.75,
-                    percentageChange = 2.5
+                    balance = currentBalance,
+                    percentageChange = 0.0 // TODO: Calculate from previous month
                 )
             }
             
             // Summary Cards Grid
             item {
                 SummaryCardsGrid(
-                    income = 5200.00,
-                    expenses = 2349.00,
-                    youOwe = 150.00,
-                    youAreOwed = 75.50
+                    income = totalIncome,
+                    expenses = totalExpense,
+                    youOwe = totalBorrowed,
+                    youAreOwed = totalLent
                 )
             }
             
