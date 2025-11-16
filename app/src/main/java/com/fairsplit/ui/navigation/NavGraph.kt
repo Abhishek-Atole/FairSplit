@@ -25,6 +25,8 @@ import com.fairsplit.ui.history.HistoryScreen
 import com.fairsplit.ui.screens.AddExpenseScreen
 import com.fairsplit.ui.screens.ExpenseListScreen
 import com.fairsplit.ui.settings.SettingsScreen
+import com.fairsplit.ui.profile.ProfileScreen
+import com.fairsplit.ui.profile.ChangePasswordScreen
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
@@ -173,6 +175,14 @@ fun NavGraph(
         composable(Screen.Settings.route) {
             SettingsScreen(navController = navController)
         }
+        
+        composable(Screen.Profile.route) {
+            ProfileScreen(navController = navController)
+        }
+        
+        composable(Screen.ChangePassword.route) {
+            ChangePasswordScreen(navController = navController)
+        }
     }
 }
 
@@ -194,4 +204,6 @@ sealed class Screen(val route: String) {
     object MonthlyReport : Screen("monthly_report")
     object History : Screen("history")
     object Settings : Screen("settings")
+    object Profile : Screen("profile")
+    object ChangePassword : Screen("change_password")
 }

@@ -57,6 +57,9 @@ fun DashboardScreen(
     
     var showLogoutDialog by remember { mutableStateOf(false) }
     
+    // Note: Avatar click now navigates to Profile screen
+    // Logout is available in Settings
+    
     // Logout confirmation dialog
     if (showLogoutDialog) {
         AlertDialog(
@@ -90,7 +93,7 @@ fun DashboardScreen(
             DashboardTopBar(
                 userName = userName,
                 onNotificationClick = { /* TODO: Navigate to notifications */ },
-                onAvatarClick = { showLogoutDialog = true }
+                onAvatarClick = { navController.navigate("profile") }
             )
         },
         floatingActionButton = {

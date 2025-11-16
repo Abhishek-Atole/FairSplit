@@ -145,7 +145,7 @@ fun SettingsScreen(
                     icon = Icons.Default.Person,
                     title = "Edit Profile",
                     subtitle = "Update your name and photo",
-                    onClick = { /* TODO: Navigate to edit profile */ }
+                    onClick = { navController.navigate("profile") }
                 )
             }
             
@@ -154,7 +154,7 @@ fun SettingsScreen(
                     icon = Icons.Default.Lock,
                     title = "Change Password",
                     subtitle = "Update your password",
-                    onClick = { /* TODO: Navigate to change password */ }
+                    onClick = { navController.navigate("change_password") }
                 )
             }
             
