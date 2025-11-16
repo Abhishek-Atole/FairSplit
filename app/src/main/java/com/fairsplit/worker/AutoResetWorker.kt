@@ -37,7 +37,7 @@ class AutoResetWorker @AssistedInject constructor(
                 return Result.failure()
             }
             
-            Log.d(TAG, "Starting monthly auto-reset for user: $userId")
+            Log.d(TAG, "Starting monthly auto-reset for authenticated user")
             
             // Perform month-end reset through repository
             when (val result = historyRepository.performMonthEndReset(userId)) {

@@ -7,6 +7,7 @@ import com.fairsplit.worker.AutoResetWorker
 import dagger.hilt.android.HiltAndroidApp
 import java.util.concurrent.TimeUnit
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.temporal.ChronoUnit
 import javax.inject.Inject
@@ -40,24 +41,23 @@ class FairSplitApplication : Application(), Configuration.Provider {
         )
             .setInitialDelay(calculateDelayToNextMonth(), TimeUnit.MILLISECONDS)
             .setConstraints(constraints)
-            .addTag("auto_reset_monthly")
+            .addTag(AutoResetWorker.WORK_NAME)
             .build()
         
         WorkManager.getInstance(this).enqueueUniquePeriodicWork(
-            "auto_reset_monthly",
+            AutoResetWorker.WORK_NAME,
             ExistingPeriodicWorkPolicy.KEEP,
             workRequest
         )
     }
     
     private fun calculateDelayToNextMonth(): Long {
-        val now = LocalDate.now()
-        val firstDayOfNextMonth = now.plusMonths(1).withDayOfMonth(1)
+        val now = LocalDateTime.now()
+        val firstDayOfNextMonth = now.toLocalDate().plusMonths(1).withDayOfMonth(1)
         val targetDateTime = firstDayOfNextMonth.atTime(0, 1)
-        val nowDateTime = now.atStartOfDay()
         
         return ChronoUnit.MILLIS.between(
-            nowDateTime.atZone(ZoneId.systemDefault()).toInstant(),
+            now.atZone(ZoneId.systemDefault()).toInstant(),
             targetDateTime.atZone(ZoneId.systemDefault()).toInstant()
         )
     }

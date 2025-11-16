@@ -83,7 +83,7 @@ class GoogleSignInHelper(private val context: Context) {
         
         auth.signInWithCredential(credential)
             .addOnSuccessListener {
-                android.util.Log.d("GoogleSignInHelper", "Firebase auth successful: ${it.user?.email}")
+                android.util.Log.d("GoogleSignInHelper", "Firebase auth successful for user")
                 onSuccess()
             }
             .addOnFailureListener { exception ->
@@ -107,14 +107,19 @@ class GoogleSignInHelper(private val context: Context) {
      * 
      * This is configured in res/values/google_sign_in.xml
      * You MUST set this up in Firebase Console first!
+     * 
+     * @throws IllegalStateException if the resource is missing
      */
     private fun getWebClientId(): String {
         return try {
             context.getString(com.fairsplit.R.string.default_web_client_id)
         } catch (e: Exception) {
             android.util.Log.e("GoogleSignInHelper", "Failed to get web client ID from resources", e)
-            // Fallback - this will NOT work for actual sign-in
-            "350884431316-PLACEHOLDER.apps.googleusercontent.com"
+            throw IllegalStateException(
+                "Missing default_web_client_id resource - Google Sign-In cannot be configured. " +
+                "Please configure Firebase in the Firebase Console and download google-services.json",
+                e
+            )
         }
     }
 }
